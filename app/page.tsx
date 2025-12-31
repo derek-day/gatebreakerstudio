@@ -9,6 +9,12 @@ const FaultyTerminal = dynamic(
   { ssr: false }
 );
 
+const PrismaticBurst = dynamic(
+  () => import('./components/PrismaticBurst'),
+  { ssr: false }
+);
+
+
 export default function GatebreakerComingSoon() {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -45,6 +51,7 @@ export default function GatebreakerComingSoon() {
           className={undefined}
           style={undefined}
         />
+
         <div className="overlay" />
       </div>
 
@@ -151,8 +158,8 @@ export default function GatebreakerComingSoon() {
           background: radial-gradient(
             ellipse at center,
             transparent 0%,
-            rgba(0,0,0,0.3) 50%,
-            rgba(0,0,0,0.7) 100%
+            rgba(0,0,0,0.2) 50%,
+            rgba(0,0,0,0.5) 100%
           );
           z-index: 1;
         }
