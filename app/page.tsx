@@ -1,65 +1,386 @@
-import Image from "next/image";
+'use client';
 
-export default function Home() {
+import dynamic from 'next/dynamic';
+import Head from 'next/head';
+import Link from 'next/link';
+// import FaultyTerminal from './components/FaultyTerminal';
+
+const FaultyTerminal = dynamic(
+  () => import('./components/FaultyTerminal'),
+  { ssr: false }
+);
+
+export default function GatebreakerComingSoon() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      <Head>
+        <title>Gatebreaker Studios — Coming Soon</title>
+        <meta
+          name="description"
+          content="Gatebreaker Studios — A game creation studio. New worlds are forming."
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+      </Head>
+
+      {/* BACKGROUND */}
+      <div className="background">
+        <FaultyTerminal
+          scale={1.5}
+          digitSize={1.2}
+          scanlineIntensity={0.5}
+          glitchAmount={1}
+          flickerAmount={1}
+          noiseAmp={1}
+          chromaticAberration={0}
+          dither={0}
+          curvature={0.1}
+          tint="#A7EF9E"
+          mouseReact
+          mouseStrength={0.5}
+          brightness={0.6} className={undefined} style={undefined}        />
+        <div className="overlay" />
+      </div>
+
+      {/* CONTENT */}
+      <main className="wrapper">
+        <section className="content">
+          <h1 className="title">Gatebreaker Studios</h1>
+
+          <div className="divider" />
+
+          <p className="description">
+            A game creation studio focused on immersive systems,
+            narrative-driven design, and worlds shaped by player choice.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+
+          <span className="status">Coming Soon</span>
+
+          {/* <p className="project">
+            First Project:{' '}
+            <Link
+              href="https://gatebreakerprotocol.com"
+              target="_blank"
+              className="link"
+            >
+              Gatebreaker Protocol
+            </Link>
+          </p> */}
+        </section>
+
+        <footer className="footer">
+          © {new Date().getFullYear()} Gatebreaker Studios LLC
+        </footer>
       </main>
-    </div>
+
+      <style jsx>{`
+        :root {
+          --bg: #06080c;
+          --fg: #e7ebf3;
+          --muted: #9aa4b2;
+          --accent: #7f5cff;
+        }
+
+        /* Background layer */
+        .background {
+          position: fixed;
+          inset: 0;
+          z-index: -2;
+        }
+
+        .background :global(canvas),
+        .background :global(div) {
+          width: 100% !important;
+          height: 100% !important;
+        }
+
+        /* Dark overlay for readability */
+        .overlay {
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(
+              900px 500px at 50% -10%,
+              rgba(20, 24, 36, 0.35),
+              rgba(6, 8, 12, 0.85)
+            );
+          z-index: 1;
+        }
+
+        /* Content */
+        .wrapper {
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 3rem 1.5rem;
+          color: var(--fg);
+          font-family: system-ui, -apple-system, BlinkMacSystemFont,
+            'Segoe UI', Roboto, sans-serif;
+          text-align: center;
+        }
+
+        .content {
+          max-width: 720px;
+          z-index: 2;
+        }
+
+        .title {
+          font-size: clamp(2.6rem, 6vw, 4.2rem);
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          margin-bottom: 1rem;
+          // animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
+        .divider {
+          width: 96px;
+          height: 2px;
+          margin: 2rem auto;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            var(--accent),
+            transparent
+          );
+        }
+
+        .description {
+          font-size: 1.1rem;
+          line-height: 1.7;
+          color: var(--muted);
+          margin-bottom: 2.5rem;
+        }
+
+        .status {
+          display: inline-block;
+          font-size: 0.95rem;
+          letter-spacing: 0.35em;
+          text-transform: uppercase;
+          color: var(--accent);
+          margin-bottom: 2.5rem;
+        }
+
+        .project {
+          font-size: 0.95rem;
+          color: var(--muted);
+        }
+
+        .link {
+          color: var(--fg);
+          text-decoration: none;
+          border-bottom: 1px solid rgba(127, 92, 255, 0.35);
+          padding-bottom: 2px;
+          transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .link:hover {
+          color: var(--accent);
+          border-color: var(--accent);
+        }
+
+        .footer {
+          margin-top: 4rem;
+          font-size: 0.75rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: #6f7885;
+          z-index: 2;
+        }
+      `}</style>
+    </>
   );
 }
+
+// 'use client';
+
+// import Head from 'next/head';
+// import Link from 'next/link';
+// import FaultyTerminal from './components/FaultyTerminal';
+
+// export default function Home() {
+//   return (
+//     <>
+//       <Head>
+//         <title>Gatebreaker Studios — Coming Soon</title>
+//         <meta
+//           name="description"
+//           content="Gatebreaker Studios is a game creation studio. New worlds are forming."
+//         />
+//       </Head>
+
+
+//       <main className="wrapper">
+//         <div className="glow" />
+
+//         <section className="content">
+//           <h1 className="title">Gatebreaker Studios</h1>
+
+//           <div className="divider" />
+
+//           <p className="description">
+//             Gatebreaker Studios is a game creation studio focused on immersive
+//             systems, narrative-driven design, and worlds shaped by player choice.
+//           </p>
+
+//           <span className="status">Coming Soon</span>
+
+//           {/* <p className="project">
+//             First Project:{' '}
+//             <Link
+//               href="https://gatebreakerprotocol.com"
+//               target="_blank"
+//               className="link"
+//             >
+//               Gatebreaker Protocol
+//             </Link>
+//           </p> */}
+//         </section>
+
+//         <footer className="footer">
+//           © {new Date().getFullYear()} Gatebreaker Studios LLC
+//         </footer>
+//       </main>
+
+//       <style jsx>{`
+//         :root {
+//           --bg: #0b0e14;
+//           --fg: #e7ebf3;
+//           --muted: #9aa4b2;
+//           --accent: #7f5cff;
+//           --accent-soft: rgba(127, 92, 255, 0.15);
+//         }
+
+//         .wrapper {
+//           min-height: 100vh;
+//           background:
+//             radial-gradient(900px 500px at 50% -10%, #161c2a, transparent 60%),
+//             var(--bg);
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           justify-content: center;
+//           padding: 3rem 1.5rem;
+//           color: var(--fg);
+//           font-family: system-ui, -apple-system, BlinkMacSystemFont,
+//             'Segoe UI', Roboto, sans-serif;
+//           position: relative;
+//           overflow: hidden;
+//         }
+
+//         .glow {
+//           position: absolute;
+//           width: 600px;
+//           height: 600px;
+//           background: radial-gradient(
+//             circle,
+//             var(--accent-soft),
+//             transparent 70%
+//           );
+//           filter: blur(60px);
+//           animation: pulse 8s ease-in-out infinite;
+//         }
+
+//         @keyframes pulse {
+//           0%,
+//           100% {
+//             transform: scale(1);
+//             opacity: 0.6;
+//           }
+//           50% {
+//             transform: scale(1.15);
+//             opacity: 0.85;
+//           }
+//         }
+
+//         .content {
+//           max-width: 720px;
+//           text-align: center;
+//           z-index: 1;
+//         }
+
+//         .title {
+//           font-size: clamp(2.6rem, 6vw, 4.2rem);
+//           letter-spacing: 0.14em;
+//           text-transform: uppercase;
+//           margin-bottom: 1rem;
+//           // animation: float 6s ease-in-out infinite;
+//         }
+
+//         @keyframes float {
+//           0%,
+//           100% {
+//             transform: translateY(0);
+//           }
+//           50% {
+//             transform: translateY(-10px);
+//           }
+//         }
+
+//         .divider {
+//           width: 96px;
+//           height: 2px;
+//           margin: 2rem auto;
+//           background: linear-gradient(
+//             90deg,
+//             transparent,
+//             var(--accent),
+//             transparent
+//           );
+//         }
+
+//         .description {
+//           font-size: 1.1rem;
+//           line-height: 1.7;
+//           color: var(--muted);
+//           margin-bottom: 2.5rem;
+//         }
+
+//         .status {
+//           display: inline-block;
+//           font-size: 0.95rem;
+//           letter-spacing: 0.35em;
+//           text-transform: uppercase;
+//           color: var(--accent);
+//           margin-bottom: 2.5rem;
+//         }
+
+//         .project {
+//           font-size: 0.95rem;
+//           color: var(--muted);
+//         }
+
+//         .link {
+//           color: var(--fg);
+//           text-decoration: none;
+//           border-bottom: 1px solid var(--accent-soft);
+//           padding-bottom: 2px;
+//           transition: color 0.2s ease, border-color 0.2s ease;
+//         }
+
+//         .link:hover {
+//           color: var(--accent);
+//           border-color: var(--accent);
+//         }
+
+//         .footer {
+//           margin-top: 4rem;
+//           font-size: 0.75rem;
+//           letter-spacing: 0.12em;
+//           text-transform: uppercase;
+//           color: #6f7885;
+//           z-index: 1;
+//         }
+//       `}</style>
+//     </>
+//   );
+// }
