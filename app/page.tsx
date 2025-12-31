@@ -1,249 +1,8 @@
-// 'use client';
-
-// import Head from 'next/head';
-// import Link from 'next/link';
-// import dynamic from 'next/dynamic';
-// import { useEffect, useState } from 'react';
-// import GateBreakBackground from './components/GateBreakBackground';
-
-// const FaultyTerminal = dynamic(
-//   () => import('./components/FaultyTerminal'),
-//   { ssr: false }
-// );
-
-// export default function GatebreakerComingSoon() {
-//   const [glitchStrength, setGlitchStrength] = useState(1);
-//   const [revealed, setRevealed] = useState(false);
-
-//   // Random glitch spikes
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       setGlitchStrength(Math.random() < 0.15 ? 4 : 1);
-//     }, 3500 + Math.random() * 4500);
-
-//     return () => clearInterval(interval);
-//   }, []);
-
-//   // Gate reveal trigger
-//   useEffect(() => {
-//     const timer = setTimeout(() => setRevealed(true), 900);
-//     return () => clearTimeout(timer);
-//   }, []);
-
-//   return (
-//     <>
-//       <Head>
-//         <title>Gatebreaker Studios — Coming Soon</title>
-//       </Head>
-
-//           <GateBreakBackground>
-//       <h1 style={{ color: '#cceaff', fontSize: '3rem' }}>
-//         GATEBREAKER
-//       </h1>
-//     </GateBreakBackground>
-
-
-//       {/* BACKGROUND */}
-//       <div className="background">
-//         <div className="interactive">
-//          <FaultyTerminal
-//            scale={1.5}
-//            digitSize={1.5}
-//            scanlineIntensity={0.5}
-//            glitchAmount={1}
-//            flickerAmount={1}
-//            noiseAmp={1}
-//            chromaticAberration={1}
-//            dither={1}
-//            curvature={0.35}
-//            tint="#A7EF9E"
-//            mouseReact
-//            mouseStrength={0.5}
-//            brightness={0.6} className={undefined} style={undefined}        />
-//         </div>
-
-//         <div className="grain" />
-//         <div className="darken" />
-//       </div>
-
-//       {/* GATE PANELS */}
-//       <div className={`gate top ${revealed ? 'open' : ''}`} />
-//       <div className={`gate bottom ${revealed ? 'open' : ''}`} />
-
-//       {/* CONTENT */}
-//       <main className="wrapper">
-//         <section className={`content ${revealed ? 'visible' : ''}`}>
-//           <h1 className="title">Gatebreaker Studios</h1>
-
-//           <div className="divider" />
-
-//           <p className="description">
-//             A game creation studio focused on immersive systems,
-//             narrative-driven design, and worlds shaped by player choice.
-//           </p>
-
-//           <span className="status">Coming Soon</span>
-
-//           <p className="project">
-//             First Project:{' '}
-//             <Link
-//               href="https://gatebreakerprotocol.com"
-//               target="_blank"
-//               className="link"
-//             >
-//               Gatebreaker Protocol
-//             </Link>
-//           </p>
-//         </section>
-//       </main>
-
-//       <style jsx>{`
-//         /* BACKGROUND */
-//         .background {
-//           position: fixed;
-//           inset: 0;
-//           z-index: -3;
-//         }
-
-//         .interactive {
-//           width: 100vw;
-//           height: 100vh;
-//         }
-
-//         .grain {
-//           position: absolute;
-//           inset: 0;
-//           background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.07'/></svg>");
-//           mix-blend-mode: overlay;
-//           pointer-events: none;
-//         }
-
-//         .darken {
-//           position: absolute;
-//           inset: 0;
-//           background: rgba(0, 0, 0, 0.55);
-//         }
-
-//         /* GATES */
-//         .gate {
-//           position: fixed;
-//           left: 0;
-//           width: 100%;
-//           height: 50%;
-//           background: linear-gradient(
-//             to bottom,
-//             rgba(10, 12, 18, 1),
-//             rgba(6, 8, 12, 0.95)
-//           );
-//           z-index: 3;
-//           transition: transform 1.6s cubic-bezier(0.77, 0, 0.175, 1);
-//         }
-
-//         .gate.top {
-//           top: 0;
-//           transform: translateY(0);
-//         }
-
-//         .gate.bottom {
-//           bottom: 0;
-//           transform: translateY(0);
-//         }
-
-//         .gate.top.open {
-//           transform: translateY(-100%);
-//         }
-
-//         .gate.bottom.open {
-//           transform: translateY(100%);
-//         }
-
-//         /* CONTENT */
-//         .wrapper {
-//           min-height: 100vh;
-//           display: flex;
-//           align-items: center;
-//           justify-content: center;
-//           padding: 3rem 1.5rem;
-//           text-align: center;
-//           color: #e7ebf3;
-//         }
-
-//         .content {
-//           max-width: 720px;
-//           opacity: 0;
-//           transform: translateY(24px);
-//           transition: opacity 1.2s ease, transform 1.2s ease;
-//           transition-delay: 1.2s;
-//           z-index: 1;
-//         }
-
-//         .content.visible {
-//           opacity: 1;
-//           transform: translateY(0);
-//         }
-
-//         .title {
-//           font-size: clamp(2.6rem, 6vw, 4.2rem);
-//           letter-spacing: 0.14em;
-//           text-transform: uppercase;
-//           margin-bottom: 1rem;
-//         }
-
-//         .divider {
-//           width: 96px;
-//           height: 2px;
-//           margin: 2rem auto;
-//           background: linear-gradient(
-//             90deg,
-//             transparent,
-//             #7f5cff,
-//             transparent
-//           );
-//         }
-
-//         .description {
-//           color: #9aa4b2;
-//           line-height: 1.7;
-//           margin-bottom: 2.5rem;
-//         }
-
-//         .status {
-//           letter-spacing: 0.35em;
-//           text-transform: uppercase;
-//           color: #7f5cff;
-//           display: block;
-//           margin-bottom: 2rem;
-//         }
-
-//         .project {
-//           color: #9aa4b2;
-//         }
-
-//         .link {
-//           color: #e7ebf3;
-//           text-decoration: none;
-//           border-bottom: 1px solid rgba(127, 92, 255, 0.35);
-//         }
-//       `}</style>
-//     </>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
 'use client';
 
+import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
-import Link from 'next/link';
-// import FaultyTerminal from './components/FaultyTerminal';
 
 const FaultyTerminal = dynamic(
   () => import('./components/FaultyTerminal'),
@@ -251,18 +10,54 @@ const FaultyTerminal = dynamic(
 );
 
 export default function GatebreakerComingSoon() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoaded(true);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       <Head>
         <title>Gatebreaker Studios — Coming Soon</title>
-        <meta
-          name="description"
-          content="Gatebreaker Studios — A game creation studio. New worlds are forming."
-        />
+        <meta name="description" content="Gatebreaker Studios — A game creation studio." />
       </Head>
 
-      {/* BACKGROUND */}
-      <div className="background">
+      {/* --- IMMERSIVE GATES --- */}
+      <div className="gate-container">
+        {/* The "Energy Crack" - Glows in the middle before opening */}
+        <div 
+          className="gate-energy-beam" 
+          style={{ opacity: isLoaded ? 0 : 1, transition: 'opacity 0.8s ease' }}
+        />
+        
+        <div 
+          className="gate-panel gate-left"
+          style={{ transform: isLoaded ? 'translateX(-100%)' : 'translateX(0)' }}
+        >
+          <div className="gate-texture" />
+        </div>
+        
+        <div 
+          className="gate-panel gate-right"
+          style={{ transform: isLoaded ? 'translateX(100%)' : 'translateX(0)' }}
+        >
+          <div className="gate-texture" />
+        </div>
+      </div>
+
+      {/* --- BACKGROUND (TERMINAL) --- */}
+      <div 
+        className="background"
+        style={{ 
+          transform: isLoaded ? 'scale(1)' : 'scale(1.2)', 
+          filter: isLoaded ? 'blur(0px)' : 'blur(10px)',
+          transition: 'transform 3s cubic-bezier(0.19, 1, 0.22, 1), filter 2s ease'
+        }}
+      >
         <FaultyTerminal
           scale={1.5}
           digitSize={1.5}
@@ -276,34 +71,25 @@ export default function GatebreakerComingSoon() {
           tint="#A7EF9E"
           mouseReact
           mouseStrength={0.5}
-          brightness={0.6} className={undefined} style={undefined}        />
+          brightness={0.6}
+          className={undefined}
+          style={undefined}
+        />
         <div className="overlay" />
       </div>
 
-      {/* CONTENT */}
-      <main className="wrapper">
+      {/* --- CONTENT --- */}
+      <main 
+        className="wrapper"
+        style={{ 
+          opacity: isLoaded ? 1 : 0, 
+          transform: isLoaded ? 'translateY(0)' : 'translateY(20px)' 
+        }}
+      >
         <section className="content">
           <h1 className="title">Gatebreaker Studios</h1>
-
-          {/* <div className="divider" /> */}
-
-          {/* <p className="description">
-            A game creation studio focused on immersive systems,
-            narrative-driven design, and worlds shaped by player choice.
-          </p> */}
-
+          <div className="divider" />
           <span className="status">Coming Soon</span>
-
-          {/* <p className="project">
-            First Project:{' '}
-            <Link
-              href="https://gatebreakerprotocol.com"
-              target="_blank"
-              className="link"
-            >
-              Gatebreaker Protocol
-            </Link>
-          </p> */}
         </section>
 
         <footer className="footer">
@@ -311,132 +97,546 @@ export default function GatebreakerComingSoon() {
         </footer>
       </main>
 
+      <style jsx global>{`
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          background-color: #06080c;
+        }
+      `}</style>
+
       <style jsx>{`
         :root {
           --bg: #06080c;
           --fg: #e7ebf3;
-          --muted: #9aa4b2;
           --accent: #7f5cff;
+          --gate-dark: #0a0c12;
         }
 
-        /* Background layer */
+        /* GATES */
+        .gate-container {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          pointer-events: none;
+          display: flex;
+        }
+
+        .gate-panel {
+          width: 50%;
+          height: 100%;
+          background-color: var(--gate-dark);
+          position: relative;
+          transition: transform 2.8s cubic-bezier(0.85, 0, 0.15, 1);
+          overflow: hidden;
+        }
+
+        /* Subtle metallic texture for the gates */
+        .gate-texture {
+          position: absolute;
+          inset: 0;
+          opacity: 0.1;
+          background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+        }
+
+        .gate-left { border-right: 2px solid #1a1a1a; }
+        .gate-right { border-left: 2px solid #1a1a1a; }
+
+        /* Energy beam in the center crack */
+        .gate-energy-beam {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          width: 4px;
+          // background: #7f5cff;
+          transform: translateX(-50%);
+          z-index: 10000;
+          // box-shadow: 0 0 30px 10px rgba(127, 92, 255, 0.6);
+        }
+
+        /* BACKGROUND & TERMINAL */
         .background {
           position: fixed;
           inset: 0;
-          z-index: -2;
+          z-index: 0; /* Changed to 0 as requested */
+          width: 100vw;
+          height: 100vh;
+          background: #000;
         }
 
-        .background :global(canvas),
-        .background :global(div) {
-          width: 100% !important;
-          height: 100% !important;
-        }
-
-        /* Dark overlay for readability */
         .overlay {
           position: absolute;
           inset: 0;
-          background:
-            radial-gradient(
-              900px 500px at 50% -10%,
-              rgba(20, 24, 36, 0.1),
-              rgba(6, 8, 12, 0.25)
-            );
+          /* Heavy vignette for "Gate" immersion */
+          background: radial-gradient(circle, transparent 20%, rgba(0,0,0,0.8) 100%);
           z-index: 1;
         }
 
-        /* Content */
+        /* WRAPPER */
         .wrapper {
+          position: relative;
+          z-index: 10; /* Sits above background */
           min-height: 100vh;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          padding: 3rem 1.5rem;
           color: var(--fg);
-          font-family: system-ui, -apple-system, BlinkMacSystemFont,
-            'Segoe UI', Roboto, sans-serif;
+          font-family: 'Inter', system-ui, sans-serif;
           text-align: center;
-        }
-
-        .content {
-          max-width: 720px;
-          z-index: 2;
+          transition: opacity 2.5s ease 0.8s, transform 2.5s ease 0.8s;
         }
 
         .title {
-          font-size: clamp(2.6rem, 6vw, 4.2rem);
-          // letter-spacing: 0.14em;
-          // text-transform: uppercase;
-          margin-bottom: 1rem;
-          // animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-          0%,
-          100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
+          font-size: clamp(2.5rem, 8vw, 4.5rem);
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          margin-bottom: 0.5rem;
+          text-shadow: 0 0 20px rgba(255,255,255,0.1);
         }
 
         .divider {
-          width: 96px;
-          height: 2px;
-          margin: 2rem auto;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            var(--accent),
-            transparent
-          );
-        }
-
-        .description {
-          font-size: 1.1rem;
-          line-height: 1.7;
-          color: var(--muted);
-          margin-bottom: 2.5rem;
+          width: 60px;
+          height: 4px;
+          background: var(--accent);
+          margin: 1.5rem auto;
+          border-radius: 2px;
         }
 
         .status {
-          display: inline-block;
-          font-size: 0.95rem;
-          letter-spacing: 0.35em;
+          font-size: 1rem;
+          letter-spacing: 0.5em;
           text-transform: uppercase;
-          color: var(--accent);
-          margin-bottom: 2.5rem;
-        }
-
-        .project {
-          font-size: 0.95rem;
-          color: var(--muted);
-        }
-
-        .link {
-          color: var(--fg);
-          text-decoration: none;
-          border-bottom: 1px solid rgba(127, 92, 255, 0.35);
-          padding-bottom: 2px;
-          transition: color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .link:hover {
-          color: var(--accent);
-          border-color: var(--accent);
+          color: #9aa4b2;
         }
 
         .footer {
-          margin-top: 4rem;
-          font-size: 0.75rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          color: #6f7885;
-          z-index: 2;
+          position: absolute;
+          bottom: 3rem;
+          font-size: 0.7rem;
+          letter-spacing: 0.2em;
+          opacity: 0.5;
         }
       `}</style>
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+// 'use client';
+
+// import { useState, useEffect } from 'react';
+// import dynamic from 'next/dynamic';
+// import Head from 'next/head';
+
+// const FaultyTerminal = dynamic(
+//   () => import('./components/FaultyTerminal'),
+//   { ssr: false }
+// );
+
+// export default function GatebreakerComingSoon() {
+//   const [isLoaded, setIsLoaded] = useState(false);
+
+//   useEffect(() => {
+//     // Start animation 100ms after mount to ensure DOM is ready
+//     const timer = setTimeout(() => {
+//       setIsLoaded(true);
+//     }, 100);
+//     return () => clearTimeout(timer);
+//   }, []);
+
+//   return (
+//     <>
+//       <Head>
+//         <title>Gatebreaker Studios — Coming Soon</title>
+//         <meta
+//           name="description"
+//           content="Gatebreaker Studios — A game creation studio. New worlds are forming."
+//         />
+//       </Head>
+
+//       {/* --- THE GATES --- 
+//           Using inline styles for the transform ensures the browser animates it 
+//           even if CSS classes are slow to attach. 
+//       */}
+//       <div className="gate-container">
+//         <div 
+//           className="gate-panel gate-left"
+//           style={{ transform: isLoaded ? 'translateX(-100%)' : 'translateX(0)' }}
+//         />
+//         <div 
+//           className="gate-panel gate-right"
+//           style={{ transform: isLoaded ? 'translateX(100%)' : 'translateX(0)' }}
+//         />
+//       </div>
+
+//       {/* BACKGROUND */}
+//       <div className="background">
+//         <FaultyTerminal
+//           scale={1.5}
+//           digitSize={1.5}
+//           scanlineIntensity={0.5}
+//           glitchAmount={1}
+//           flickerAmount={1}
+//           noiseAmp={1}
+//           chromaticAberration={1}
+//           dither={1}
+//           curvature={0.35}
+//           tint="#A7EF9E"
+//           mouseReact
+//           mouseStrength={0.5}
+//           brightness={0.6}
+//           className={undefined}
+//           style={undefined}
+//         />
+//         <div className="overlay" />
+//       </div>
+
+//       {/* CONTENT 
+//           We force opacity: 0 and display: flex inline to prevent the "Upper Left" flash.
+//       */}
+//       <main 
+//         className="wrapper"
+//         style={{ 
+//           opacity: isLoaded ? 1 : 0, 
+//           transform: isLoaded ? 'scale(1)' : 'scale(0.95)' 
+//         }}
+//       >
+//         <section className="content">
+//           <h1 className="title">Gatebreaker Studios</h1>
+//           <span className="status">Coming Soon</span>
+//         </section>
+
+//         <footer className="footer">
+//           © {new Date().getFullYear()} Gatebreaker Studios LLC
+//         </footer>
+//       </main>
+
+//       <style jsx global>{`
+//         /* GLOBAL RESET to ensure full screen */
+//         html, body {
+//           margin: 0;
+//           padding: 0;
+//           width: 100%;
+//           height: 100%;
+//           overflow: hidden; /* Prevent scrollbars during animation */
+//           background-color: #06080c;
+//         }
+//       `}</style>
+
+//       <style jsx>{`
+//         :root {
+//           --bg: #06080c;
+//           --fg: #e7ebf3;
+//           --muted: #9aa4b2;
+//           --accent: #7f5cff;
+//           --gate-color: #06080c; /* Matches BG */
+//         }
+
+//         /* --- GATE STYLES --- */
+//         .gate-container {
+//           position: fixed;
+//           top: 0;
+//           left: 0;
+//           width: 100vw;
+//           height: 100vh;
+//           z-index: 9999;
+//           pointer-events: none;
+//           display: flex; /* Ensures gates sit side-by-side correctly */
+//         }
+
+//         .gate-panel {
+//           width: 50%;
+//           height: 100%;
+//           background-color: var(--gate-color);
+//           position: relative;
+//           z-index: 10000;
+//           /* The transition handles the smoothness of the inline transform change */
+//           transition: transform 2.5s cubic-bezier(0.19, 1, 0.22, 1);
+//           will-change: transform;
+//         }
+
+//         .gate-left {
+//           border-right: 1px solid #1a1a1a;
+//           box-shadow: inset -10px 0 30px rgba(0,0,0,1);
+//         }
+
+//         .gate-right {
+//           border-left: 1px solid #1a1a1a;
+//           box-shadow: inset 10px 0 30px rgba(0,0,0,1);
+//         }
+
+//         /* --- BACKGROUND --- */
+//         .background {
+//           position: fixed;
+//           inset: 0;
+//           z-index: 0;
+//           width: 100vw;
+//           height: 100vh;
+//         }
+
+//         .overlay {
+//           position: absolute;
+//           inset: 0;
+//           background: radial-gradient(
+//             circle at 50% 50%,
+//             rgba(20, 24, 36, 0.1),
+//             rgba(6, 8, 12, 0.4)
+//           );
+//           z-index: 1;
+//         }
+
+//         /* --- WRAPPER LAYOUT --- */
+//         .wrapper {
+//           position: relative;
+//           z-index: 10;
+//           min-height: 100vh;
+//           width: 100%;
+          
+//           /* Critical Flexbox centering */
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           justify-content: center;
+          
+//           padding: 3rem 1.5rem;
+//           color: var(--fg);
+//           font-family: system-ui, -apple-system, sans-serif;
+//           text-align: center;
+          
+//           /* The transition handles the smoothness of the inline opacity change */
+//           transition: opacity 2s ease 0.5s, transform 2s ease 0.5s;
+//         }
+
+//         .content {
+//           max-width: 720px;
+//         }
+
+//         .title {
+//           font-size: clamp(2.6rem, 6vw, 4.2rem);
+//           margin-bottom: 1rem;
+//         }
+
+//         .status {
+//           display: inline-block;
+//           font-size: 0.95rem;
+//           letter-spacing: 0.35em;
+//           text-transform: uppercase;
+//           color: var(--accent);
+//           margin-bottom: 2.5rem;
+//         }
+
+//         .footer {
+//           margin-top: 4rem;
+//           font-size: 0.75rem;
+//           letter-spacing: 0.12em;
+//           text-transform: uppercase;
+//           color: #6f7885;
+//         }
+//       `}</style>
+//     </>
+//   );
+// }
+
+
+
+
+
+
+
+
+// 'use client';
+
+// import dynamic from 'next/dynamic';
+// import Head from 'next/head';
+// import Link from 'next/link';
+
+// const FaultyTerminal = dynamic(
+//   () => import('./components/FaultyTerminal'),
+//   { ssr: false }
+// );
+
+// export default function GatebreakerComingSoon() {
+//   return (
+//     <>
+//       <Head>
+//         <title>Gatebreaker Studios — Coming Soon</title>
+//         <meta
+//           name="description"
+//           content="Gatebreaker Studios — A game creation studio. New worlds are forming."
+//         />
+//       </Head>
+
+//       {/* BACKGROUND */}
+//       <div className="background">
+//         <FaultyTerminal
+//           scale={1.5}
+//           digitSize={1.5}
+//           scanlineIntensity={0.5}
+//           glitchAmount={1}
+//           flickerAmount={1}
+//           noiseAmp={1}
+//           chromaticAberration={1}
+//           dither={1}
+//           curvature={0.35}
+//           tint="#A7EF9E"
+//           mouseReact
+//           mouseStrength={0.5}
+//           brightness={0.6} className={undefined} style={undefined}        />
+//         <div className="overlay" />
+//       </div>
+
+//       {/* CONTENT */}
+//       <main className="wrapper">
+//         <section className="content">
+//           <h1 className="title">Gatebreaker Studios</h1>
+
+//           <span className="status">Coming Soon</span>
+
+//         </section>
+
+//         <footer className="footer">
+//           © {new Date().getFullYear()} Gatebreaker Studios LLC
+//         </footer>
+//       </main>
+
+//       <style jsx>{`
+//         :root {
+//           --bg: #06080c;
+//           --fg: #e7ebf3;
+//           --muted: #9aa4b2;
+//           --accent: #7f5cff;
+//         }
+
+//         /* Background layer */
+//         .background {
+//           position: fixed;
+//           inset: 0;
+//           z-index: -2;
+//         }
+
+//         .background :global(canvas),
+//         .background :global(div) {
+//           width: 100% !important;
+//           height: 100% !important;
+//         }
+
+//         /* Dark overlay for readability */
+//         .overlay {
+//           position: absolute;
+//           inset: 0;
+//           background:
+//             radial-gradient(
+//               900px 500px at 50% -10%,
+//               rgba(20, 24, 36, 0.1),
+//               rgba(6, 8, 12, 0.25)
+//             );
+//           z-index: 1;
+//         }
+
+//         /* Content */
+//         .wrapper {
+//           min-height: 100vh;
+//           display: flex;
+//           flex-direction: column;
+//           align-items: center;
+//           justify-content: center;
+//           padding: 3rem 1.5rem;
+//           color: var(--fg);
+//           font-family: system-ui, -apple-system, BlinkMacSystemFont,
+//             'Segoe UI', Roboto, sans-serif;
+//           text-align: center;
+//         }
+
+//         .content {
+//           max-width: 720px;
+//           z-index: 2;
+//         }
+
+//         .title {
+//           font-size: clamp(2.6rem, 6vw, 4.2rem);
+//           // letter-spacing: 0.14em;
+//           // text-transform: uppercase;
+//           margin-bottom: 1rem;
+//           // animation: float 6s ease-in-out infinite;
+//         }
+
+//         @keyframes float {
+//           0%,
+//           100% {
+//             transform: translateY(0);
+//           }
+//           50% {
+//             transform: translateY(-10px);
+//           }
+//         }
+
+//         .divider {
+//           width: 96px;
+//           height: 2px;
+//           margin: 2rem auto;
+//           background: linear-gradient(
+//             90deg,
+//             transparent,
+//             var(--accent),
+//             transparent
+//           );
+//         }
+
+//         .description {
+//           font-size: 1.1rem;
+//           line-height: 1.7;
+//           color: var(--muted);
+//           margin-bottom: 2.5rem;
+//         }
+
+//         .status {
+//           display: inline-block;
+//           font-size: 0.95rem;
+//           letter-spacing: 0.35em;
+//           text-transform: uppercase;
+//           color: var(--accent);
+//           margin-bottom: 2.5rem;
+//         }
+
+//         .project {
+//           font-size: 0.95rem;
+//           color: var(--muted);
+//         }
+
+//         .link {
+//           color: var(--fg);
+//           text-decoration: none;
+//           border-bottom: 1px solid rgba(127, 92, 255, 0.35);
+//           padding-bottom: 2px;
+//           transition: color 0.2s ease, border-color 0.2s ease;
+//         }
+
+//         .link:hover {
+//           color: var(--accent);
+//           border-color: var(--accent);
+//         }
+
+//         .footer {
+//           margin-top: 4rem;
+//           font-size: 0.75rem;
+//           letter-spacing: 0.12em;
+//           text-transform: uppercase;
+//           color: #6f7885;
+//           z-index: 2;
+//         }
+//       `}</style>
+//     </>
+//   );
+// }
