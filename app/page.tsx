@@ -92,23 +92,7 @@ export default function GatebreakerComingSoon() {
         <div className="portal-depth-layer layer-1" style={{ opacity: isLoaded ? 0 : 1 }} />
         <div className="portal-depth-layer layer-2" style={{ opacity: isLoaded ? 0 : 1 }} />
         <div className="portal-depth-layer layer-3" style={{ opacity: isLoaded ? 0 : 1 }} />
-        
-        {/* Energy rings */}
-        <div 
-          className="portal-ring ring-1" 
-          style={{ 
-            opacity: isLoaded ? 0 : 1,
-            transform: isLoaded ? 'scale(0)' : 'scale(1)'
-          }}
-        />
-        <div 
-          className="portal-ring ring-2" 
-          style={{ 
-            opacity: isLoaded ? 0 : 1,
-            transform: isLoaded ? 'scale(0)' : 'scale(1)'
-          }}
-        />
-        
+                
         {/* Energy vortex in center */}
         <div 
           className="portal-vortex" 
@@ -358,20 +342,6 @@ export default function GatebreakerComingSoon() {
           animation: fadeInUp 1.2s ease forwards, backdropBlur 18s ease forwards;
         }
 
-        // .status::after {
-        //   content: '';
-        //   position: absolute;
-        //   top: 50%;
-        //   right: -30px;
-        //   width: 8px;
-        //   height: 8px;
-        //   background: #d97742;
-        //   border-radius: 50%;
-        //   transform: translateY(-50%);
-        //   box-shadow: 0 0 12px #d97742;
-        //   animation: pulse 2s ease-in-out infinite;
-        // }
-
         @keyframes pulse {
           0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
           50% { opacity: 0.4; transform: translateY(-50%) scale(0.8); }
@@ -442,6 +412,7 @@ export default function GatebreakerComingSoon() {
             transparent 65%
           );
           animation: portalPulse 3s ease-in-out infinite;
+          opacity: 0.75;
         }
 
         .layer-2 {
@@ -453,6 +424,7 @@ export default function GatebreakerComingSoon() {
           );
           animation: portalPulse 3s ease-in-out infinite;
           animation-delay: 0.4s;
+          opacity: 0.75;
         }
 
         .layer-3 {
@@ -464,50 +436,12 @@ export default function GatebreakerComingSoon() {
           );
           animation: portalPulse 3s ease-in-out infinite;
           animation-delay: 0.8s;
+          opacity: 0.75;
         }
 
         @keyframes portalPulse {
           0%, 100% { transform: scale(1); opacity: 1; }
           50% { transform: scale(1.08); opacity: 0.7; }
-        }
-
-        /* Portal rings */
-        .portal-ring {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          border-radius: 50%;
-          border: 2px solid;
-          transition: opacity 1.4s ease-out, transform 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        .ring-1 {
-          width: 300px;
-          height: 300px;
-          margin-left: -150px;
-          margin-top: -150px;
-          border-color: #5a7fa8;
-          box-shadow: 
-            0 0 18px rgba(90, 127, 168, 0.4), 
-            inset 0 0 18px rgba(90, 127, 168, 0.25);
-          animation: ringRotate 8s linear infinite;
-        }
-
-        .ring-2 {
-          width: 200px;
-          height: 200px;
-          margin-left: -100px;
-          margin-top: -100px;
-          border-color: #d97742;
-          box-shadow: 
-            0 0 15px rgba(217, 119, 66, 0.4), 
-            inset 0 0 15px rgba(217, 119, 66, 0.25);
-          animation: ringRotate 12s linear infinite reverse;
-        }
-
-        @keyframes ringRotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
         }
 
         /* Central vortex */
