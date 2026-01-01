@@ -44,11 +44,11 @@ export default function GatebreakerComingSoon() {
           noiseAmp={1}
           chromaticAberration={1}
           dither={1}
-          curvature={0.35}
+          curvature={0.3}
           tint="#5a7fa8"
           mouseReact
           mouseStrength={0.5}
-          brightness={0.6}
+          brightness={0.65}
           className={undefined}
           style={undefined}
         />
@@ -73,9 +73,9 @@ export default function GatebreakerComingSoon() {
           </div>
           
           <div className="status-container">
-            <div className="status-line" />
+            {/* <div className="status-line" /> */}
             <span className="status" style={{ animationDelay: '1.7s' }}>Initializing...</span>
-            <div className="status-line" />
+            {/* <div className="status-line" /> */}
           </div>
         </section>
 
@@ -203,7 +203,7 @@ export default function GatebreakerComingSoon() {
           position: absolute;
           inset: 0;
           background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-          opacity: 0.03;
+          opacity: 0.04;
           z-index: 2;
         }
 
@@ -220,7 +220,7 @@ export default function GatebreakerComingSoon() {
           color: #e8f4f8;
           text-align: center;
           transition: opacity 2.2s cubic-bezier(0.19, 1, 0.22, 1) 0.8s, 
-                      transform 2.2s cubic-bezier(0.19, 1, 0.22, 1) 0.8s;
+          transform 2.2s cubic-bezier(0.19, 1, 0.22, 1) 0.8s;
         }
 
         .content {
@@ -344,6 +344,7 @@ export default function GatebreakerComingSoon() {
           letter-spacing: 0.3em;
           text-transform: uppercase;
           color: #d4b884;
+          // color: #a8b5c7;
           position: relative;
           padding: 0.5rem 1.5rem;
           border: 1px solid rgba(90, 127, 168, 0.3);
@@ -354,21 +355,22 @@ export default function GatebreakerComingSoon() {
           );
           opacity: 0;
           animation: fadeInUp 1.2s ease forwards;
+          animation: fadeInUp 1.2s ease forwards, backdropBlur 18s ease forwards;
         }
 
-        .status::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          right: -30px;
-          width: 8px;
-          height: 8px;
-          background: #d97742;
-          border-radius: 50%;
-          transform: translateY(-50%);
-          box-shadow: 0 0 12px #d97742;
-          animation: pulse 2s ease-in-out infinite;
-        }
+        // .status::after {
+        //   content: '';
+        //   position: absolute;
+        //   top: 50%;
+        //   right: -30px;
+        //   width: 8px;
+        //   height: 8px;
+        //   background: #d97742;
+        //   border-radius: 50%;
+        //   transform: translateY(-50%);
+        //   box-shadow: 0 0 12px #d97742;
+        //   animation: pulse 2s ease-in-out infinite;
+        // }
 
         @keyframes pulse {
           0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
@@ -403,6 +405,15 @@ export default function GatebreakerComingSoon() {
           to {
             opacity: 1;
             transform: translateY(0);
+          }
+        }
+
+        @keyframes backdropBlur {
+          from {
+            backdrop-filter: blur(0px);
+          }
+          to {
+            backdrop-filter: blur(10px);
           }
         }
 
@@ -635,18 +646,22 @@ export default function GatebreakerComingSoon() {
         /* Responsive adjustments */
         @media (max-width: 768px) {
           .title {
-            font-size: clamp(2rem, 10vw, 4rem);
+            font-size: clamp(2rem, 11vw, 4rem);
             letter-spacing: -0.02em;
           }
 
           .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             letter-spacing: 0.5em;
-            margin-top: 0.25rem;
+            margin-top: 0rem;
           }
 
           .status-container {
             gap: 1rem;
+          }
+
+          .status {
+            font-size: 0.7rem;
           }
 
           .status-line {
@@ -656,6 +671,7 @@ export default function GatebreakerComingSoon() {
           .footer-content {
             flex-direction: column;
             gap: 0.5rem;
+            font-size: 0.6rem;
           }
         }
       `}</style>
