@@ -412,7 +412,6 @@ export default function GatebreakerComingSoon() {
             transparent 65%
           );
           animation: portalPulse 3s ease-in-out infinite;
-          opacity: 0.75;
         }
 
         .layer-2 {
@@ -424,7 +423,6 @@ export default function GatebreakerComingSoon() {
           );
           animation: portalPulse 3s ease-in-out infinite;
           animation-delay: 0.4s;
-          opacity: 0.75;
         }
 
         .layer-3 {
@@ -436,12 +434,11 @@ export default function GatebreakerComingSoon() {
           );
           animation: portalPulse 3s ease-in-out infinite;
           animation-delay: 0.8s;
-          opacity: 0.75;
         }
 
         @keyframes portalPulse {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.08); opacity: 0.7; }
+          0%, 100% { transform: scale(1); opacity: 0.9; }
+          50% { transform: scale(1.08); opacity: 0.6; }
         }
 
         /* Central vortex */
