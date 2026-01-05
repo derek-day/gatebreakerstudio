@@ -882,6 +882,14 @@ export default function GatebreakerComingSoon() {
             margin-top: 0rem;
           }
 
+          .logo-container {
+            margin-bottom: 0.5rem;
+          }
+
+          .countdown-container {
+            margin: 0;
+          }
+
           .footer-content {
             flex-direction: column;
             gap: 0.5rem;
