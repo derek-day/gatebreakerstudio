@@ -170,7 +170,7 @@ const CountdownDisplay = () => {
             rgba(90, 127, 168, 0.08) 0%,
             rgba(120, 86, 161, 0.08) 100%
           );
-          border-radius: 8px;
+          // border-radius: 8px;
           min-width: 80px;
           text-align: center;
           box-shadow: 
