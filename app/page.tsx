@@ -177,8 +177,9 @@ const CountdownDisplay = () => {
             0 0 20px rgba(90, 127, 168, 0.1),
             inset 0 0 20px rgba(120, 86, 161, 0.05);
           will-change: contents;
-          opacity: 0;
-          animation: fadeInUp 1.2s ease forwards, backdropBlur 18s ease forwards;
+          // opacity: 0;
+          // animation: fadeInUp 1.2s ease forwards, backdropBlur 18s ease forwards;
+          animation: backdropBlur 18s ease forwards;
         }
 
         .countdown-label {
