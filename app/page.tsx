@@ -159,7 +159,7 @@ const CountdownDisplay = () => {
 
         .countdown-value {
           font-family: 'OfficeRegular', sans-serif;
-          font-size: clamp(2.5rem, 5vw, 4rem);
+          font-size: clamp(2rem, 5vw, 2.5rem);
           font-weight: 700;
           color: #d4b884;
           line-height: 1;
@@ -214,7 +214,7 @@ const CountdownDisplay = () => {
 
         .glitch-text {
           font-family: 'OfficeRegular', sans-serif;
-          font-size: clamp(2.5rem, 6vw, 5rem);
+          font-size: clamp(2rem, 5vw, 3.5rem);
           font-weight: 700;
           letter-spacing: 0.5em;
           color: #d97742;
