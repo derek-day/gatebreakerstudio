@@ -135,7 +135,7 @@ const CountdownDisplay = () => {
       <style jsx>{`
         .countdown-container {
           // margin: 3rem 0;
-          margin-bottom: 3rem;
+          margin-bottom: 2rem;
           opacity: 0;
           animation: fadeInUp 1.2s ease forwards;
           min-height: 120px;
@@ -579,7 +579,8 @@ export default function GatebreakerComingSoon() {
 
         .logo-container {
           // margin-bottom: 3rem;
-          margin-bottom: 1rem;
+          // margin-bottom: 1rem;
+          margin: 1rem 0;
         }
 
         .title {
@@ -896,7 +897,8 @@ export default function GatebreakerComingSoon() {
 
           .logo-container {
             // margin-bottom: 0.5rem;
-            margin-bottom: 0;
+            // margin-bottom: 0;
+            margin: 2rem 0 0;
           }
 
           .countdown-container {
