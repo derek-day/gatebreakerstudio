@@ -135,8 +135,8 @@ const CountdownDisplay = () => {
       <style jsx>{`
         .countdown-container {
           // margin: 3rem 0;
-          // opacity: 0;
-          // animation: fadeInUp 1.2s ease forwards;
+          opacity: 0;
+          animation: fadeInUp 1.2s ease forwards;
           min-height: 120px;
           display: flex;
           align-items: center;
