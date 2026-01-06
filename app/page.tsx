@@ -147,14 +147,14 @@ const CountdownDisplay = () => {
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: 1rem;
+          // gap: 1rem;
         }
 
         .countdown-item {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 0.5rem;
+          // gap: 0.5rem;
         }
 
         .countdown-value {
@@ -163,23 +163,25 @@ const CountdownDisplay = () => {
           font-weight: 700;
           color: #d4b884;
           line-height: 1;
-          padding: 1rem 1.5rem;
-          border: 1px solid rgba(90, 127, 168, 0.3);
-          background: linear-gradient(
-            135deg,
-            rgba(90, 127, 168, 0.08) 0%,
-            rgba(120, 86, 161, 0.08) 100%
-          );
+          // padding: 1rem 1.5rem;
+          // padding: 1rem;
+          padding: 0.5rem;
+          // border: 1px solid rgba(90, 127, 168, 0.3);
+          // background: linear-gradient(
+          //   135deg,
+          //   rgba(90, 127, 168, 0.08) 0%,
+          //   rgba(120, 86, 161, 0.08) 100%
+          // );
           // border-radius: 8px;
           min-width: 80px;
           text-align: center;
-          box-shadow: 
-            0 0 20px rgba(90, 127, 168, 0.1),
-            inset 0 0 20px rgba(120, 86, 161, 0.05);
+          // box-shadow: 
+          //   0 0 20px rgba(90, 127, 168, 0.1),
+          //   inset 0 0 20px rgba(120, 86, 161, 0.05);
           will-change: contents;
           // opacity: 0;
           // animation: fadeInUp 1.2s ease forwards, backdropBlur 18s ease forwards;
-          animation: backdropBlur 18s ease forwards;
+          // animation: backdropBlur 18s ease forwards;
         }
 
         .countdown-label {
@@ -193,15 +195,17 @@ const CountdownDisplay = () => {
         .countdown-separator {
           font-family: 'OfficeRegular', sans-serif;
           font-size: clamp(2rem, 4vw, 3rem);
-          color: #5a7fa8;
-          margin: 0 0.25rem;
+          font-size: clamp(1.5rem, 3vw, 2.5rem);
+          color: #becfe2;
+          margin: 0 0.15rem;
+          padding-bottom: 1.1rem;
           opacity: 0.6;
           animation: blink 2s ease-in-out infinite;
         }
 
         @keyframes blink {
-          0%, 100% { opacity: 0.6; }
-          50% { opacity: 0.2; }
+          0%, 100% { opacity: 0.7; }
+          50% { opacity: 0.3; }
         }
 
         /* Glitch display */
@@ -343,7 +347,11 @@ const CountdownDisplay = () => {
         }
 
         @media (max-width: 768px) {
-          .countdown-grid { gap: 0.5rem; }
+          .countdown-grid { 
+            // gap: 0.5rem; 
+            gap: 0;
+          }
+
           .countdown-value {
             font-size: clamp(1.5rem, 4vw, 2.5rem);
             padding: 0.75rem 1rem;
@@ -568,7 +576,8 @@ export default function GatebreakerComingSoon() {
         }
 
         .logo-container {
-          margin-bottom: 3rem;
+          // margin-bottom: 3rem;
+          margin-bottom: 1rem;
         }
 
         .title {
@@ -884,7 +893,8 @@ export default function GatebreakerComingSoon() {
           }
 
           .logo-container {
-            margin-bottom: 0.5rem;
+            // margin-bottom: 0.5rem;
+            margin-bottom: 0;
           }
 
           .countdown-container {
