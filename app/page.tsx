@@ -602,6 +602,7 @@ export default function GatebreakerComingSoon() {
           color: #e8f4f8;
           position: relative;
           transform-style: preserve-3d;
+          letter-spacing: 0rem;
         }
 
         .title-word::before {
@@ -751,8 +752,8 @@ export default function GatebreakerComingSoon() {
         }
 
         @keyframes portalPulse {
-          0%, 100% { transform: scale(1); opacity: 0.9; }
-          50% { transform: scale(1.08); opacity: 0.6; }
+          0%, 100% { transform: scale(1); opacity: 0.5; }
+          50% { transform: scale(1.08); opacity: 0.25; }
         }
 
         .portal-vortex {
