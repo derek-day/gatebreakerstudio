@@ -3,4 +3,12 @@
   height: 100%;
   position: relative;
   overflow: hidden;
+  animation: zoom 60s linear;
+  transform: scale(1.5);
+
+}
+
+@keyframes zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.5); }
 }
