@@ -177,7 +177,8 @@ const CountdownDisplay = () => {
           font-size: clamp(2rem, 5vw, 2.5rem);
           font-weight: 700;
           // color: #d4b884;
-          color: #f8dca9;
+          // color: #f8dca9;
+          color: #e8ca95;
           line-height: 1;
           // padding: 1rem 1.5rem;
           // padding: 1rem;
