@@ -140,8 +140,8 @@ const CountdownDisplay = () => {
             rel="noopener noreferrer"
             className="kickstarter-button"
           >
-            <span className="kickstarter-text">Back the breakers <span className="kickstarter-icon">♦</span> Kickstarter</span>
-            
+            <span className="kickstarter-text">Back the breakers</span>
+            {/* <span className="kickstarter-text">Back the breakers <span className="kickstarter-icon">♦</span> Kickstarter</span> */}
           </a>
         </div>
       )}
@@ -275,18 +275,34 @@ const CountdownDisplay = () => {
           gap: 0.75rem;
           padding: 1rem 2rem;
           font-family: 'OfficeRegular', sans-serif;
-          font-size: 0.9rem;
-          letter-spacing: 0.15em;
+          font-size: 1rem;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           text-decoration: none;
           color: #d4b884;
+          color: #f8dca9;
+          color: #2BDE73; /* Kickstarter green text */
+          color: #eafff3; /* subtle mint-white for contrast */
           border: 2px solid rgba(90, 127, 168, 0.4);
+          border: 2px solid rgba(43, 222, 115, 0.45);
           background: linear-gradient(
             135deg,
             rgba(90, 127, 168, 0.05) 0%,
             rgba(120, 86, 161, 0.05) 100%
           );
-          border-radius: 4px;
+          background: linear-gradient(
+            135deg,
+            rgba(90, 127, 168, 0.25) 0%,
+            rgba(217, 119, 66, 0.25) 40%,
+            rgba(120, 86, 161, 0.25) 100%
+          );
+          background: linear-gradient(
+            135deg,
+            rgba(43, 222, 115, 0.20) 0%,
+            rgba(27, 180, 90, 0.25) 40%,
+            rgba(15, 120, 60, 0.30) 100%
+          );
+          // border-radius: 4px;
           transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
@@ -313,16 +329,31 @@ const CountdownDisplay = () => {
         }
 
         .kickstarter-button:hover {
-          border-color: rgba(212, 184, 132, 0.6);
-          background: linear-gradient(
-            135deg,
-            rgba(90, 127, 168, 0.1) 0%,
-            rgba(120, 86, 161, 0.1) 100%
-          );
+          // border-color: rgba(212, 184, 132, 0.6);
+          // background: linear-gradient(
+          //   135deg,
+          //   rgba(90, 127, 168, 0.1) 0%,
+          //   rgba(120, 86, 161, 0.1) 100%
+          // );
+          // transform: translateY(-2px);
+          // box-shadow: 
+          //   0 4px 20px rgba(90, 127, 168, 0.15),
+          //   0 0 30px rgba(212, 184, 132, 0.1);
+
+          border-color: rgba(217, 119, 66, 0.8);
           transform: translateY(-2px);
           box-shadow: 
-            0 4px 20px rgba(90, 127, 168, 0.15),
-            0 0 30px rgba(212, 184, 132, 0.1);
+            0 0 50px rgba(217, 119, 66, 0.6),
+            inset 0 0 50px rgba(120, 86, 161, 0.2);
+
+
+            color: #eafff3; /* subtle mint-white for contrast */
+            border-color: rgba(43, 222, 115, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 
+              0 0 50px rgba(43, 222, 115, 0.6),
+              inset 0 0 50px rgba(20, 140, 75, 0.25);
+
         }
 
         .kickstarter-text {
@@ -357,13 +388,15 @@ const CountdownDisplay = () => {
           display: inline-flex;
           align-items: center;
           gap: 1rem;
-          padding: 1.5rem 3rem;
+          padding: 1.5rem 2rem;
           font-family: 'OfficeRegular', sans-serif;
           font-size: 1.2rem;
-          letter-spacing: 0.2em;
+          letter-spacing: 0.1em;
           text-transform: uppercase;
           text-decoration: none;
           color: #d4b884;
+          color: #f8dca9;
+          color: #fff2dc;
           border: 2px solid rgba(90, 127, 168, 0.5);
           // background: linear-gradient(
           //   135deg,
@@ -373,12 +406,12 @@ const CountdownDisplay = () => {
           // );
           background: linear-gradient(
             135deg,
-            rgba(90, 127, 168, 0.25) 0%,
-            rgba(217, 119, 66, 0.25) 50%,
-            rgba(120, 86, 161, 0.25) 100%
+            rgba(90, 127, 168, 0.3) 0%,
+            rgba(217, 119, 66, 0.3) 40%,
+            rgba(120, 86, 161, 0.3) 100%
           );
           background-size: 200% 200%;
-          border-radius: 4px;
+          // border-radius: 4px;
           position: relative;
           overflow: hidden;
           transition: all 0.3s ease;
