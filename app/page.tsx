@@ -176,7 +176,8 @@ const CountdownDisplay = () => {
           font-family: 'OfficeRegular', sans-serif;
           font-size: clamp(2rem, 5vw, 2.5rem);
           font-weight: 700;
-          color: #d4b884;
+          // color: #d4b884;
+          color: #f8dca9;
           line-height: 1;
           // padding: 1rem 1.5rem;
           // padding: 1rem;
@@ -279,30 +280,21 @@ const CountdownDisplay = () => {
           letter-spacing: 0.1em;
           text-transform: uppercase;
           text-decoration: none;
-          color: #d4b884;
-          color: #f8dca9;
-          color: #2BDE73; /* Kickstarter green text */
           color: #eafff3; /* subtle mint-white for contrast */
-          border: 2px solid rgba(90, 127, 168, 0.4);
+          // border: 2px solid rgba(90, 127, 168, 0.4);
           border: 2px solid rgba(43, 222, 115, 0.45);
-          background: linear-gradient(
-            135deg,
-            rgba(90, 127, 168, 0.05) 0%,
-            rgba(120, 86, 161, 0.05) 100%
-          );
-          background: linear-gradient(
-            135deg,
-            rgba(90, 127, 168, 0.25) 0%,
-            rgba(217, 119, 66, 0.25) 40%,
-            rgba(120, 86, 161, 0.25) 100%
-          );
+          // background: linear-gradient(
+          //   135deg,
+          //   rgba(90, 127, 168, 0.25) 0%,
+          //   rgba(217, 119, 66, 0.25) 40%,
+          //   rgba(120, 86, 161, 0.25) 100%
+          // );
           background: linear-gradient(
             135deg,
             rgba(43, 222, 115, 0.20) 0%,
             rgba(27, 180, 90, 0.25) 40%,
             rgba(15, 120, 60, 0.30) 100%
           );
-          // border-radius: 4px;
           transition: all 0.3s ease;
           position: relative;
           overflow: hidden;
@@ -325,35 +317,22 @@ const CountdownDisplay = () => {
         }
 
         .kickstarter-button:hover::before {
-          left: 100%;
+          // left: 100%;
         }
 
         .kickstarter-button:hover {
-          // border-color: rgba(212, 184, 132, 0.6);
-          // background: linear-gradient(
-          //   135deg,
-          //   rgba(90, 127, 168, 0.1) 0%,
-          //   rgba(120, 86, 161, 0.1) 100%
-          // );
+          // border-color: rgba(217, 119, 66, 0.8);
           // transform: translateY(-2px);
           // box-shadow: 
-          //   0 4px 20px rgba(90, 127, 168, 0.15),
-          //   0 0 30px rgba(212, 184, 132, 0.1);
+          //   0 0 50px rgba(217, 119, 66, 0.6),
+          //   inset 0 0 50px rgba(120, 86, 161, 0.2);
 
-          border-color: rgba(217, 119, 66, 0.8);
+          color: #eafff3; /* subtle mint-white for contrast */
+          border-color: rgba(43, 222, 115, 0.9);
           transform: translateY(-2px);
           box-shadow: 
-            0 0 50px rgba(217, 119, 66, 0.6),
-            inset 0 0 50px rgba(120, 86, 161, 0.2);
-
-
-            color: #eafff3; /* subtle mint-white for contrast */
-            border-color: rgba(43, 222, 115, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 
-              0 0 50px rgba(43, 222, 115, 0.6),
-              inset 0 0 50px rgba(20, 140, 75, 0.25);
-
+            0 0 50px rgba(43, 222, 115, 0.6),
+            inset 0 0 50px rgba(20, 140, 75, 0.25);
         }
 
         .kickstarter-text {
